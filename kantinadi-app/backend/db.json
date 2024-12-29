@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "654d",
+      "username": "cihuyy",
+      "email": "dzakialfitra23@gmail.com",
+      "password": "password456"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "2wuiei",
+      "status": "Berhasil",
+      "date": "20224-09-01",
+      "total": "10.000",
+      "metode": "Cash"
+    }
+  ],
+  "foods": [
+    {
+      "id": "8f07",
+      "name": "nasi",
+      "stock": 9
+    },
+    {
+      "id": "2e55",
+      "name": "ayam",
+      "stock": 9
+    }
+  ]
+}

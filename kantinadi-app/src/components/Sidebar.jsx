@@ -7,7 +7,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const menuItems = [
     { name: 'Dasbor', path: '/dasbor' },
-    { name: 'Pesanan Baru', path: '/PesananBaru' },
+    { name: 'Stock Makanan', path: '/Stock' },
     { name: 'Pelanggan', path: '/pelanggan' },
     { name: 'Insight', path: '/insight' },
   ];

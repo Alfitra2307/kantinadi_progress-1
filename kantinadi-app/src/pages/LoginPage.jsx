@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,21 +12,22 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      // Firebase sign-in method
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      const { data: users } = await axios.get("http://localhost:5000/users");
+      const user = users.find((u) => u.email === email && u.password === password);
 
-      // Simpan email pengguna ke localStorage
-      localStorage.setItem("userEmail", user.email);
-
-      // Navigasi ke dashboard
-      navigate("/dasbor");
-    } catch (error) {
-      setError("Email atau password salah");
-      console.error("Login error:", error.message);
+      if (user) {
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("username", user.username);
+        navigate("/dasbor");
+      } else {
+        setError("Email atau password salah.");
+      }
+    } catch (err) {
+      setError("Terjadi kesalahan saat login.");
+      console.error(err);
     }
   };
-
+  
   return (
     <div className="flex h-screen font-baloo">
       <div className="w-1/2 bg-white flex flex-col justify-center items-center p-8">
